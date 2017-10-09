@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <import resource="Spring_hibernate.xml"/>
+
+       <bean id="userDAO" class="DAO.userDAO">
+              <property name="sessionFactory" ref="sessionFactory">
+              </property>
+       </bean>
+       <bean id="userManageBase" class="manager.UserManager">
+              <property name="userDAO" ref="userDAO">
+              </property>
+              <property name="objectMapper" ref="objectMapper">
+              </property>
+       </bean>
+       <bean id="userManager" parent="transactionBase">
+              <property name="target" ref="userManageBase"/>
+       </bean>
+
+       <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
+       </bean>
+
+</beans>
