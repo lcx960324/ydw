@@ -1,0 +1,14 @@
+CREATE TABLE dir_msg
+(
+    fileId INT(11) NOT NULL AUTO_INCREMENT,
+    path VARCHAR(256) NOT NULL,
+    isDir INT(11) NOT NULL,
+    user VARCHAR(20) NOT NULL,
+    isDel INT(11) NOT NULL,
+    time VARCHAR(25) NOT NULL,
+    deltime VARCHAR(25) DEFAULT 'times',
+    deluser VARCHAR(20),
+    fname VARCHAR(50) NOT NULL,
+    linked VARCHAR(200),
+    fileSize BIGINT(20)
+);

@@ -29,63 +29,7 @@ public class UserController {
 
     @Resource(name = "objectMapper")
     private ObjectMapper objectMapper;
-    @RequestMapping("test")
-    public String test(String test){
-        System.out.println(test);
-        return "index";
-    }
-
-//    @RequestMapping("ttttt")
-//    public void upload(String filePath, String fileName, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        if(request.getSession(true)==null){
-//            response.sendRedirect("/result/noLogin.jsp");
-//        }else {
-//            String rootPath = Config.map.get("upload.path")
-//                    + "/" ;
-//            File testPath = new File(rootPath+filePath);
-//            if (!testPath.exists()){
-//                testPath.mkdirs();
-//            }
-//            CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
-//            if(multipartResolver.isMultipart(request)){
-//                MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
-//                Iterator<String> iter = multipartHttpServletRequest.getFileNames();
-//                while(iter.hasNext()){
-//                    MultipartFile file = multipartHttpServletRequest.getFile(iter.next());
-//                    String urls[] = new String[4];
-//
-//                    if(file!=null && !file.isEmpty()) {
-//                        String path =  rootPath+filePath+"/"+fileName;
-//                        File localFile = new File(path);
-//                        if(!localFile.exists()){
-//                            try{
-//                                localFile.createNewFile();
-//                            } catch (IOException e){
-//                                e.printStackTrace();
-//                            }
-//                        }else {
-//                            for(int i = 0;;) {
-//                                path = rootPath + filePath + "/" + i + fileName;
-//                                File test = new File(path);
-//                                if(test.exists()){
-//                                    i++;
-//                                }else {
-//                                    break;
-//                                }
-//                            }
-//                        }
-//                        localFile.setWritable(true, false);
-//                        file.transferTo(localFile);
-//
-//                        request.getRequestDispatcher("/showAllFile.do?path="+filePath).forward(request,response);
-//
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
-
+    
     @RequestMapping("download")
     public void download(String path,String name, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
@@ -321,8 +265,7 @@ public class UserController {
         response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.setHeader("Access-Control-Allow-Methods","POST");
         response.setHeader("Access-Control-Allow-Headers","x-requested-with,content-type");
-        response.setHeader("Access-Control-Allow-Credentials","true"); //�Ƿ�֧��cookie����
-
+        response.setHeader("Access-Control-Allow-Credentials","true"); 
     }
 
     private void deleteDir(File file, String user, String rootPath){
